@@ -62,4 +62,14 @@ Rails.application.configure do
   # - см.п.2.4 srv-osvita5-180619(devise)
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'mail.daplus.net.ua',
+    port:                 2525,
+    domain:               'daplus.net.ua',
+    user_name:            'gaydarenko@daplus.net.ua',
+    password:             '1qaz2wsx',
+    authentication:       'plain',
+    enable_starttls_auto: true }
+
 end
