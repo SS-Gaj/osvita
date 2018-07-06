@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      user: 'Пользователь'
+    attributes:
+      user:
+        email: 'Электронный адрес'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        

@@ -1,0 +1,16 @@
+ru:
+  common:
+    errors: 'При заполнении формы возникли ошибки:'
+  users:
+    registrations:
+      new:
+        title: 'Регистрация'
+        submit: 'Сохранить'
+        password: 'символов минимум'
+      edit:
+        title: 'Внести изменения'
+    sessions:
+      new:
+        title: 'Вход'
+        submit: 'Войти'
+      

@@ -1,6 +1,7 @@
-<h2>Регистрация</h2>
+<h2><%= I18n.t('users.registrations.new.title') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h5><%= I18n.t('common.errors') %></h5>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -11,7 +12,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> <%= I18n.t('users.registrations.new.password') %>)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -22,7 +23,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit I18n.t('users.registrations.new.submit') %>
   </div>
 <% end %>
 
