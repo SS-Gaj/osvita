@@ -30,4 +30,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    errors: 'When filling out the form, errors occurred:'
+  users:
+    registrations:
+      new:
+        title: 'Sign up'
+        submit: 'Save'
+        password: 'characters minimum'
+      edit:
+        title: 'Update'
+    sessions:
+      new:
+        title: 'Sign in'
+        submit: 'Sign in'
+
