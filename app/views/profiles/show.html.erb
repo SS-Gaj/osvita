@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Пользователь:</strong>
+  <%= @profile.user.email %>
+</p>
+
+<p>
+  <strong>Категория:</strong>
+  <%= @profile.category %>
+</p>
+
+<p>
+  <strong>Дата регистрации:</strong>
+  <%= @profile.user.created_at %>
+</p>
+
+<% unless @profile.category == "admin" %>
+<p>
+  <strong>Оплаченный счет:</strong>
+</p>
+<% end %>
+
