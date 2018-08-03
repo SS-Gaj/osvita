@@ -4,8 +4,12 @@ Rails.application.routes.draw do
     get 'profile', to: 'profiles#show'
     resources :profiles
     resources :orders
+    as :user do
+      get "profileshow", to: "users/sessions#show_profile"
+    end
     # devise_for :users
-    devise_for :users, controllers: { sessions: 'users/sessions' }
+    # devise_for :users, controllers: { sessions: 'users/sessions' }
+    devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     # get '/:locale' => 'welcome#index'
     root 'welcome#index'
     get 'welcome/index'
