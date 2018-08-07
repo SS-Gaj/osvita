@@ -10,11 +10,18 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @profile = current_user.profile
   end
 
   # GET /orders/new
   def new
-    @order = Order.new
+    #@order = Order.new
+    @profile = current_user.profile
+    @order = @profile.orders.create(order_num: Order.count + 1,
+                   date_at: Time.now,
+                   date_end: 3.months.from_now,
+                   content: "За тестирование",
+                   suma: 25.75)
   end
 
   # GET /orders/1/edit

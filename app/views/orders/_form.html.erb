@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :id_user %>
-    <%= form.number_field :id_user %>
+    <p>Пользователь: <%= current_user.email %> </p>
+  </div>
+
+  <div class="field">
+    <p>Категория: <%= @profile.category %> </p>
   </div>
 
   <div class="field">

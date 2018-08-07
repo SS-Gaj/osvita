@@ -20,10 +20,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def show_profile
-    # @user = User.find(current_user.id)
     @profile = current_user.profile
-    # @profile = @user.profile
-    # @profile = Profile.find_by user_id: @current_user.id
+    @orders = @profile.orders
+    # byebug
   end
 
   # protected

@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Id user:</strong>
-  <%= @order.id_user %>
+  <strong>Пользователь:</strong>
+  <%= current_user.email %>
+</p>
+
+<p>
+  <strong>Категория:</strong>
+  <%= @profile.category %>
 </p>
 
 <p>
@@ -23,6 +28,11 @@
 <p>
   <strong>Content:</strong>
   <%= @order.content %>
+</p>
+
+<p>
+  <strong>Suma:</strong>
+  <%= @order.suma %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

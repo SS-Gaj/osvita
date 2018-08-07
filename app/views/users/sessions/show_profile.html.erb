@@ -21,13 +21,44 @@
 </p>
 
 <% unless @profile.category == "admin" %>
+
+<% if @profile.orders.empty? %>
   <p>
-    <strong>Оплаченный счет:</strong>
+    <strong>Нет выписанных счетов;</strong>
   </p>
 <% else %>
+  <div class="row">
+    <div class="col-md-2">Счет №</div>
+    <div class="col-md-2">Дата</div>
+    <div class="col-md-3">Назначение оплаты</div>
+    <div class="col-md-2">Сумма</div>
+    <div class="col-md-3">Наличие оплаты</div>
+  </div>
+
+  <% @orders.each do |rec| %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= rec.order_num %>
+      </div>
+      <div class="col-md-2">
+        <%= rec.date_at %>
+      </div>
+      <div class="col-md-3">
+        <%= rec.content %>
+      </div>
+      <div class="col-md-2">
+        <%= rec.suma %>
+      </div>
+    </div>  <!--row-->  
+  <% end %>
+<% end %>
+
+<% else %>
   <h3>
+
     <strong> Права администратора </strong>
   </h3>
+
 <% end %>
 
 
