@@ -13,11 +13,21 @@
         <a class="nav-link" href="#">Свободный просмотр</a>
       </li>
       <% if user_signed_in? %>
+        <% if current_user.profile.category == "admin" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Журналы</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <%= link_to ' Профили ', profiles_path, class: "dropdown-item" %>
+              <%= link_to ' Счета ', orders_path, class: "dropdown-item" %>
+              <%= link_to ' Оплата ', payments_path, class: "dropdown-item" %>
+              </div>
+            </li>
+        <% end %>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сделайте выбор...</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <%= link_to 'Профиль', profile_path, class: "dropdown-item" %>
-            <%= link_to 'Профиль 2', profileshow_path, class: "dropdown-item" %>
+            <%= link_to 'Профиль ', profileshow_path, class: "dropdown-item" %>
             <%= link_to 'Получить счет на оплату', new_order_path, class: "dropdown-item" %>
               <a class="dropdown-item" href="#">Только после оплаты</a>
             </div>

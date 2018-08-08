@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kvit num:</strong>
+  <%= @payment.kvit_num %>
+</p>
+
+<p>
+  <strong>Date at:</strong>
+  <%= @payment.date_at %>
+</p>
+
+<p>
+  <strong>Suma:</strong>
+  <%= @payment.suma %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @payment.content %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @payment.order %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

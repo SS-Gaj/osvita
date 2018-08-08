@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payments
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   scope "(:locale)", locale: /en|ru/ do
     get 'profile', to: 'profiles#show'
