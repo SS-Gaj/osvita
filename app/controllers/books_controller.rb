@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    redirect_to parts_path	#parts#index
   end
 
   # GET /books/new

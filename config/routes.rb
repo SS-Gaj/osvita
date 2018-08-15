@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :books
-  resources :payments
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   scope "(:locale)", locale: /en|ru/ do
+    resources :parts
+    #get '/books/:id' =>  'parts#index', book_id: 'id'
+    get '/books/:id' =>  'parts#index'
+    resources :books
+    resources :payments
     get 'profile', to: 'profiles#show'
     resources :profiles
     resources :orders
@@ -18,3 +21,4 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
