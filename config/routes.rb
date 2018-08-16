@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|ru/ do
     resources :parts
     #get '/books/:id' =>  'parts#index', book_id: 'id'
+    get '/books/new' =>  'books#new'
     get '/books/:id' =>  'parts#index'
     resources :books
     resources :payments
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     # get '/:locale' => 'welcome#index'
     root 'welcome#index'
     get 'welcome/index'
+    match '/free',    to: 'welcome#free',    via: 'get'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

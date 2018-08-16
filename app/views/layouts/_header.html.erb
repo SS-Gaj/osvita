@@ -10,7 +10,7 @@
         <a class="nav-link" href="<%= welcome_index_path %>">Главная <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Свободный просмотр</a>
+        <a class="nav-link" href="<%= free_path %>">Свободный просмотр</a>
       </li>
       <% if user_signed_in? %>
         <% if current_user.profile.category == "admin" %>
