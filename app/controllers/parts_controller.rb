@@ -5,7 +5,6 @@ class PartsController < ApplicationController
   # GET /parts.json
   def index
     #@parts = Part.all
-    #@book = Book.find(params[:id])
  #byebug
     #@book_id = params[:book_id]
     @book_id = params[:id]
@@ -23,14 +22,9 @@ class PartsController < ApplicationController
   # GET /parts/new
   def new
     #@part = Part.new
-#byebug   
-    #@book = Book.find(@book_id)
-    #@book = Book.find(2)
     @book = Book.find(params[:id])
-    @part = @book.parts.create()
-    #@part = @book.parts.build(part_params)
-    @book_id = @part.book_id   
-    
+    #@book_id = @book.id    
+    @part = @book.parts.build()
   end
 
   # GET /parts/1/edit
@@ -41,12 +35,12 @@ class PartsController < ApplicationController
   # POST /parts
   # POST /parts.json
   def create
-    #@part = Part.new(part_params)
-    #@part = @book.parts.build(part_params)
-    
+    @book = Book.find(params[:part][:book_id])
+    @part = @book.parts.build(part_params)    
     respond_to do |format|
       if @part.save
         format.html { redirect_to @part, notice: 'Part was successfully created.' }
+        #format.html { redirect_to parts_path, notice: 'Part was successfully created.' }
         format.json { render :show, status: :created, location: @part }
       else
         format.html { render :new }
@@ -60,7 +54,8 @@ class PartsController < ApplicationController
   def update
     respond_to do |format|
       if @part.update(part_params)
-        format.html { redirect_to @part, notice: 'Part was successfully updated.' }
+        format.html { redirect_to @part, notice: 'Part was successfully created.' }
+        #format.html { redirect_to parts_path, notice: 'Part was successfully created.' }
         format.json { render :show, status: :ok, location: @part }
       else
         format.html { render :edit }

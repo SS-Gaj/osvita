@@ -1,4 +1,5 @@
-<%= form_with(model: part, local: true) do |form| %>
+<%= form_with(model: part, local: true) do |part_form| %>
+  <%= part_form.fields_for :book do |book_fields| %>
   <% if part.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
@@ -12,17 +13,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :part %>
-    <%= form.text_field :part %>
+    <%= part_form.label :part %>
+    <%= part_form.text_field :part %>
+    <%= part_form.number_field :book_id, hidden: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= part_form.submit %>
   </div>
 <% end %>
-
-<p>
-  <strong>Book_id:</strong>
-  <%= @part.book_id %>
-</p>
+<% end %>
 
