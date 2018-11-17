@@ -1,0 +1,50 @@
+<%= form_with(model: question, local: true) do |question_form| %>
+  <%= question_form.fields_for :part do |part_fields| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= question_form.label :question %>
+    <%= question_form.text_field :question %>
+    <%= question_form.number_field :part_id, hidden: true %>
+  </div>
+
+  <div class="field">
+    <%= question_form.label :answer1 %>
+    <%= question_form.text_field :answer1 %>
+  </div>
+
+  <div class="field">
+    <%= question_form.label :answer2 %>
+    <%= question_form.text_field :answer2 %>
+  </div>
+
+  <div class="field">
+    <%= question_form.label :answer3 %>
+    <%= question_form.text_field :answer3 %>
+  </div>
+
+  <div class="field">
+    <%= question_form.label :answer4 %>
+    <%= question_form.text_field :answer4 %>
+  </div>
+
+  <div class="field">
+    <%= question_form.label :best %>
+    <%= question_form.text_field :best %>
+  </div>
+
+  <div class="actions">
+    <%= question_form.submit %>
+  </div>
+<% end %>
+<% end %>

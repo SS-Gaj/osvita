@@ -17,6 +17,8 @@
         <td><%= part.part %></td>
         <td><%= link_to 'Edit | ', edit_part_path(part) %></td>
         <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'ВОПРОСЫ', controller: "questions", action: "index", id: part.id %>
+
       </tr>
     <% end %>
   </tbody>
