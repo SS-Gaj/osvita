@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   resources :questions
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   scope "(:locale)", locale: /en|ru/ do
-    resources :parts
+    resources :parts, only: :show
     #get '/books/:id' =>  'parts#index', book_id: 'id'
     get '/books/new' =>  'books#new'
     get '/books/:id' =>  'parts#index'
-    resources :books
+    resources :books, only: :show  
+    namespace :admin do
+      resources :books, :parts
+    end
     resources :payments
     get 'profile', to: 'profiles#show'
     resources :profiles
