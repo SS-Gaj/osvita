@@ -1,5 +1,5 @@
 class PartsController < ApplicationController
-  before_action :set_part, only: :show
+#  before_action :set_part, only: :show
 
   # GET /parts
   # GET /parts.json
@@ -15,21 +15,12 @@ class PartsController < ApplicationController
 
   # GET /parts/1
   # GET /parts/1.json
-  def show
-    @book_id = @part.book_id
-  end
-
+#  def show
 #  def new
 #  def edit
 #  def create
 #  def update
 #  def destroy
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_part
-      @part = Part.find(params[:id])
-    end
-
+#    def set_part
 #    def part_params
 end

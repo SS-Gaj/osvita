@@ -1,8 +1,7 @@
 class Admin::PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
-  # GET /parts
-  # GET /parts.json
+  # admin_parts   (/:locale)/admin/parts(.:format   admin/parts#index {:locale=>/en|ru/}
   def index
     #@parts = Part.all
  #byebug
@@ -11,35 +10,34 @@ class Admin::PartsController < ApplicationController
     @book = Book.find(@book_id)
     @parts = @book.parts
   end
-
-  # GET /parts/1
-  # GET /parts/1.json
+  # admin_part    (/:locale)/admin/parts/:id(.:format)    admin/parts#show {:locale=>/en|ru/}
   def show
     @book_id = @part.book_id
   end
 
-  # GET /parts/new
+  # new_admin_part    (/:locale)/admin/parts/new(.:format)    admin/parts#new {:locale=>/en|ru/}
   def new
     #@part = Part.new
     @book = Book.find(params[:id])
     @part = @book.parts.build()
   end
 
-  # GET /parts/1/edit
+  # edit_admin_part   (/:locale)/admin/parts/:id/edit   admin/parts#edit {:locale=>/en|ru/}
   def edit
     @book_id = @part.book_id
   end
 
-  # POST /parts
-  # POST /parts.json
+  # admin_parts   (/:locale)/admin/parts(.:format   admin/parts#create {:locale=>/en|ru/}
   def create
     @book = Book.find(params[:part][:book_id])
     @part = @book.parts.build(part_params)    
     respond_to do |format|
       if @part.save
-        format.html { redirect_to @part, notice: 'Part was successfully created.' }
-        #format.html { redirect_to parts_path, notice: 'Part was successfully created.' }
-        format.json { render :show, status: :created, location: @part }
+        #format.html { redirect_to @part, notice: 'Part was successfully created.' }
+        format.html { redirect_to [:admin, @part], notice: 'Part was successfully created.' }
+        #admin/parts#index
+        #format.html { redirect_to admin_parts_path, notice: 'Part was successfully created.' }
+        #format.json { render :show, status: :created, location: @part }
       else
         format.html { render :new }
         format.json { render json: @part.errors, status: :unprocessable_entity }
@@ -47,14 +45,15 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /parts/1
-  # PATCH/PUT /parts/1.json
+  # admin_part    (/:locale)/admin/parts/:id(.:format)    admin/parts#update {:locale=>/en|ru/}
   def update
     respond_to do |format|
       if @part.update(part_params)
-        format.html { redirect_to @part, notice: 'Part was successfully created.' }
-        #format.html { redirect_to parts_path, notice: 'Part was successfully created.' }
-        format.json { render :show, status: :ok, location: @part }
+        #format.html { redirect_to @part, notice: 'Part was successfully created.' }
+        format.html { redirect_to [:admin, @part], notice: 'Part was successfully created.' }
+        #admin/parts#index
+        #format.html { redirect_to admin_parts_path, notice: 'Part was successfully created.' }
+        #format.json { render :show, status: :ok, location: @part }
       else
         format.html { render :edit }
         format.json { render json: @part.errors, status: :unprocessable_entity }
@@ -62,8 +61,7 @@ class Admin::PartsController < ApplicationController
     end
   end
 
-  # DELETE /parts/1
-  # DELETE /parts/1.json
+  # admin_part    (/:locale)/admin/parts/:id(.:format)    admin/parts#destroy {:locale=>/en|ru/}
   def destroy
     @part.destroy
     respond_to do |format|

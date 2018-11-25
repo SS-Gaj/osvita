@@ -1,4 +1,4 @@
-<%= form_with(model: question, local: true) do |question_form| %>
+<%= form_with(model: [:admin, @question], local: true) do |question_form| %>
   <%= question_form.fields_for :part do |part_fields| %>
   <% if question.errors.any? %>
     <div id="error_explanation">

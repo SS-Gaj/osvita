@@ -13,6 +13,14 @@
         <a class="nav-link" href="<%= free_path %>">Свободный просмотр</a>
       </li>
       <% if user_signed_in? %>
+              <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сделайте выбор...</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <%= link_to 'Профиль ', profileshow_path, class: "dropdown-item" %>
+            <%= link_to 'Получить счет на оплату', new_order_path, class: "dropdown-item" %>
+              <a class="dropdown-item" href="#">Только после оплаты</a>
+            </div>
+          </li>
         <% if current_user.profile.category == "admin" %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Журналы</a>
@@ -23,17 +31,11 @@
               <%= link_to ' Предметы ', admin_books_path, class: "dropdown-item" %>
               </div>
             </li>
+        <% else %>
+          <li class="nav-item">
+        <%= link_to ' Тестирование ', books_path, class: "nav-link" %>
+      </li>
         <% end %>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Сделайте выбор...</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <%= link_to 'Профиль ', profileshow_path, class: "dropdown-item" %>
-            <%= link_to 'Получить счет на оплату', new_order_path, class: "dropdown-item" %>
-              <a class="dropdown-item" href="#">Только после оплаты</a>
-            </div>
-          </li>
-
         <% end %>
     </ul>
       <ul class="navbar-nav pull-xs-right">

@@ -26,8 +26,8 @@
         <td><%= question.answer3 %></td>
         <td><%= question.answer4 %></td>
         <td><%= question.best %></td>
-        <td><%#= link_to 'Show', question %></td>
-        <td><%#= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%#= link_to 'Show', [:admin, @question] %></td>
+        <td><%= link_to 'Edit', edit_admin_question_path(question) %></td>
         <td><%#= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -36,4 +36,5 @@
 
 <br>
 
-<%= link_to 'Назад к списку УРОКОВ', controller: "parts", action: "index", id: @part.book_id %>
+<%= link_to 'New Question', controller: "admin/questions", action: "new", id: @part_id %> | 
+<%= link_to 'Назад к списку УРОКОВ', controller: "admin/parts", action: "index", id: @part.book_id %>

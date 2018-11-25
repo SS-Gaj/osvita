@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Part:</strong>
+  <%= @part.part %>
+</p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @part.book %>
+</p>
+
+<%= link_to 'Edit', edit_admin_part_path(@part) %> |
+<%= link_to 'Back', controller: "admin/parts", action: "index", id: @book_id %>
