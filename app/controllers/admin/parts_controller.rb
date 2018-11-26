@@ -5,11 +5,11 @@ class Admin::PartsController < ApplicationController
   def index
     #@parts = Part.all
  #byebug
-    #@book_id = params[:book_id]
     @book_id = params[:id]
     @book = Book.find(@book_id)
     @parts = @book.parts
   end
+
   # admin_part    (/:locale)/admin/parts/:id(.:format)    admin/parts#show {:locale=>/en|ru/}
   def show
     @book_id = @part.book_id
@@ -17,7 +17,6 @@ class Admin::PartsController < ApplicationController
 
   # new_admin_part    (/:locale)/admin/parts/new(.:format)    admin/parts#new {:locale=>/en|ru/}
   def new
-    #@part = Part.new
     @book = Book.find(params[:id])
     @part = @book.parts.build()
   end
@@ -33,10 +32,7 @@ class Admin::PartsController < ApplicationController
     @part = @book.parts.build(part_params)    
     respond_to do |format|
       if @part.save
-        #format.html { redirect_to @part, notice: 'Part was successfully created.' }
         format.html { redirect_to [:admin, @part], notice: 'Part was successfully created.' }
-        #admin/parts#index
-        #format.html { redirect_to admin_parts_path, notice: 'Part was successfully created.' }
         #format.json { render :show, status: :created, location: @part }
       else
         format.html { render :new }
@@ -49,10 +45,7 @@ class Admin::PartsController < ApplicationController
   def update
     respond_to do |format|
       if @part.update(part_params)
-        #format.html { redirect_to @part, notice: 'Part was successfully created.' }
         format.html { redirect_to [:admin, @part], notice: 'Part was successfully created.' }
-        #admin/parts#index
-        #format.html { redirect_to admin_parts_path, notice: 'Part was successfully created.' }
         #format.json { render :show, status: :ok, location: @part }
       else
         format.html { render :edit }
@@ -63,9 +56,10 @@ class Admin::PartsController < ApplicationController
 
   # admin_part    (/:locale)/admin/parts/:id(.:format)    admin/parts#destroy {:locale=>/en|ru/}
   def destroy
+    @book_id = @part.book_id
     @part.destroy
     respond_to do |format|
-      format.html { redirect_to admin_parts_url, notice: 'Part was successfully destroyed.' }
+      format.html { redirect_to action: "index", id: @book_id }
       format.json { head :no_content }
     end
   end

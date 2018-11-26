@@ -2,14 +2,12 @@ class Admin::BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   # GET /books
-  # GET /books.json
   def index
     @books = Book.all
 #byebug    
   end
 
   # GET /books/1
-  # GET /books/1.json
   def show
     redirect_to admin_parts_path	#parts#index
   end
@@ -24,14 +22,11 @@ class Admin::BooksController < ApplicationController
   end
 
   # POST /books
-  # POST /books.json
   def create
     @book = Book.new(book_params)
 
     respond_to do |format|
       if @book.save
-        #format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        #format.html { redirect_to [:admin, @book], notice: 'Book was successfully created.' }
         format.html { redirect_to admin_books_path, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :created, location: @book }
       else
@@ -42,11 +37,9 @@ class Admin::BooksController < ApplicationController
   end
 
   # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
       if @book.update(book_params)
-        #format.html { redirect_to [:admin, @book], notice: 'Book was successfully created.' }
         format.html { redirect_to admin_books_path, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else
@@ -57,7 +50,6 @@ class Admin::BooksController < ApplicationController
   end
 
   # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
     @book.destroy
     respond_to do |format|
