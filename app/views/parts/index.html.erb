@@ -15,7 +15,7 @@
     <% @parts.each do |part| %>
       <tr>
         <td><%= part.part %></td>
-        <td><%= link_to 'ВОПРОСЫ', controller: "questions", action: "index", id: part.id %>
+        <td><%= link_to 'НАЧАТЬ ТЕСТИРОВАНИЕ', controller: "seances", action: "index", id: part.id %>
       </tr>
     <% end %>
   </tbody>

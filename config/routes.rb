@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :questions, only: :index
+  resources :seances
+  #get 'testing', action: :testing, controller: 'questions'
+  #resources :questions, only: :index
+  resources :questions, only: :index do
+    get 'testing', on: :new
+  end
+
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   scope "(:locale)", locale: /en|ru/ do
     resources :parts, only: :show

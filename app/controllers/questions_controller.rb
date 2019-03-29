@@ -1,20 +1,16 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: :show
 
 def index
-    @part_id = params[:id]
-    @part = Part.find(@part_id)
-    @book = Book.find(@part.book_id)
-    @questions = @part.questions
+  @part_id = params[:id]
+  @part = Part.find(@part_id)
+  @questions = @part.questions
+  @howmuch_testing = 5
+  @setanswer = []
+  redirect_to testing_new_question_path
 end
 
-  def show
-    @part_id = @question.part_id
+  def testing
+    @howmuch_testing = 5
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
 end

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Testing:</strong>
+  <%= @howmuch_testing %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question.question %>
+</p>
+
+<%#= link_to 'Edit', edit_question_path(@question) %>
+<%#= link_to 'Back', controller: "questions", action: "index", id: @part_id %>
+<%= link_to 'Back', controller: "parts", action: "index", id: 1 %>

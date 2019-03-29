@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quest1</th>
+      <th>Quest2</th>
+      <th>Quest3</th>
+      <th>Quest4</th>
+      <th>Quest5</th>
+      <th>Quest6</th>
+      <th>Quest7</th>
+      <th>quest8</th>
+      <th>Quest9</th>
+      <th>Quest10</th>
+      <th>Be quests</th>
+      <th>User</th>
+      <th>Part</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seances.each do |seance| %>
+      <tr>
+        <td><%= seance.quest1 %></td>
+        <td><%= seance.quest2 %></td>
+        <td><%= seance.quest3 %></td>
+        <td><%= seance.quest4 %></td>
+        <td><%= seance.quest5 %></td>
+        <td><%= seance.quest6 %></td>
+        <td><%= seance.quest7 %></td>
+        <td><%= seance.quest8 %></td>
+        <td><%= seance.quest9 %></td>
+        <td><%= seance.quest10 %></td>
+        <td><%= seance.be_quests %></td>
+        <td><%= seance.user_id %></td>
+        <td><%= seance.part_id %></td>
+        <td><%= link_to 'Show', seance %></td>
+        <td><%= link_to 'Edit', edit_seance_path(seance) %></td>
+        <td><%= link_to 'Destroy', seance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seance', new_seance_path %>
