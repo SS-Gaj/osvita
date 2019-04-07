@@ -9,8 +9,4 @@ def index
   redirect_to testing_new_question_path
 end
 
-  def testing
-    @howmuch_testing = 5
-  end
-
 end

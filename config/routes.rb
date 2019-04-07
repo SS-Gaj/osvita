@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  match 'seances', to: 'seances#testing', via: [:post]
   resources :seances
+  #resources :seances do
+  #  get 'testing', on: :new
+  #end
   #get 'testing', action: :testing, controller: 'questions'
-  #resources :questions, only: :index
-  resources :questions, only: :index do
-    get 'testing', on: :new
-  end
+  resources :questions, only: :index
+  #resources :questions, only: :index do
+  #  get 'testing', on: :new
+  #end
 
   # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
   scope "(:locale)", locale: /en|ru/ do

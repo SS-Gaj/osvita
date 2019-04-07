@@ -1,127 +1,25 @@
-<%= form_with(model: seance, local: true) do |form| %>
-  <% if seance.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(seance.errors.count, "error") %> prohibited this seance from being saved:</h2>
-
-      <ul>
-      <% seance.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :quest1 %>
-    <%= form.number_field :quest1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest2 %>
-    <%= form.number_field :quest2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest3 %>
-    <%= form.number_field :quest3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest4 %>
-    <%= form.number_field :quest4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest5 %>
-    <%= form.number_field :quest5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest6 %>
-    <%= form.number_field :quest6 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest7 %>
-    <%= form.number_field :quest7 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :9quest8 %>
-    <%= form.number_field :9quest8 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest9 %>
-    <%= form.number_field :quest9 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quest10 %>
-    <%= form.number_field :quest10 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :be_quests %>
-    <%= form.text_field :be_quests %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ1 %>
-    <%= form.text_field :answ1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ2 %>
-    <%= form.text_field :answ2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ3 %>
-    <%= form.text_field :answ3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ4 %>
-    <%= form.text_field :answ4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ5 %>
-    <%= form.text_field :answ5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ6 %>
-    <%= form.text_field :answ6 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ7 %>
-    <%= form.text_field :answ7 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ8 %>
-    <%= form.text_field :answ8 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ9 %>
-    <%= form.text_field :answ9 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answ10 %>
-    <%= form.text_field :answ10 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+<%= form_with(model: seance, url: { action: "testing" }, local: true) do |form| %>
+  <p>
+    <%= check_box_tag :one %>
+    <%= label_tag(:one, "Первый вариант") %>
+  </p>
+  <p>
+    <%= check_box_tag :two %>
+    <%= label_tag(:two, "Второй вариант") %>
+  </p>
+  <p>
+    <%= check_box_tag :three %>
+    <%= label_tag(:three, "Третий вариант") %>
+  </p>
+  <p>
+    <%= check_box_tag :four %>
+    <%= label_tag(:four, "Четвертый вариант") %>
+  </p>
+  
+      <%= number_field_tag :howmuch, @howmuch, hidden: true %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+  
 <% end %>

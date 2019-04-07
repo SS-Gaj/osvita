@@ -1,5 +1,5 @@
 class SeancesController < ApplicationController
-  before_action :set_seance, only: [:show, :edit, :destroy]
+  before_action :set_seance, only: [:show, :edit, :update, :destroy]
 # см.п.5.2:
 # Поскольку этот контроллер был сгенерирован со scaffold,
 # то теперь нужно посмотреть, что из него убрать
@@ -21,11 +21,9 @@ class SeancesController < ApplicationController
 #    quest7: mas[6], quest8: mas[7], quest9: mas[8], quest10: mas[9], )
 
     @seances = Seance.first
-    @howmuch = '1'
-    @one  = 0
-    @two  = 0
-    @three  = 0
-    @four = 0
+    @howmuch = 5
+    @mascheck = 1
+    #@mascheck.push("1", "Первый вариант")
       
     render "testing"
   
@@ -45,6 +43,35 @@ class SeancesController < ApplicationController
   def edit
   end
 
+  # POST /seances
+  # POST /seances.json
+  def create
+    @seance = Seance.new(seance_params)
+
+    respond_to do |format|
+      if @seance.save
+        format.html { redirect_to @seance, notice: 'Seance was successfully created.' }
+        format.json { render :show, status: :created, location: @seance }
+      else
+        format.html { render :new }
+        format.json { render json: @seance.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /seances/1
+  # PATCH/PUT /seances/1.json
+  def update
+    respond_to do |format|
+      if @seance.update(seance_params)
+        format.html { redirect_to @seance, notice: 'Seance was successfully updated.' }
+        format.json { render :show, status: :ok, location: @seance }
+      else
+        format.html { render :edit }
+        format.json { render json: @seance.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /seances/1
   # DELETE /seances/1.json
@@ -58,18 +85,10 @@ class SeancesController < ApplicationController
   end
 
   def testing
-    @one  = params[:one]
-    @two  = params[:two]
-    @three  = params[:three]
-    @four = params[:four]
-    @howmuch = params[:howmuch].to_i + 1
+    @howmuch = 5
+byebug
 
-#byebug
-    if @howmuch > 5 
-      render "show"
-    else
-      @howmuch = @howmuch.to_s
-    end
+    render "show"
   end
 
   private
@@ -78,4 +97,8 @@ class SeancesController < ApplicationController
       @seance = Seance.find(params[:id])
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def seance_params
+      params.require(:seance).permit(:quest1, :quest2, :quest3, :quest4, :quest5, :quest6, :quest7, :quest8, :quest9, :quest10, :be_quests, :answ1, :answ2, :answ3, :answ4, :answ5, :answ6, :answ7, :answ8, :answ9, :answ10, :user_id)
+    end
 end
