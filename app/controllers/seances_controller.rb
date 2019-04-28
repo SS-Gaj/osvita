@@ -12,18 +12,17 @@ class SeancesController < ApplicationController
     @part = Part.find(@part_id)
     @questions = @part.questions
     @user = User.find(current_user.profile.user_id)
-#   @seance = @user.seances.create(quest1: 11)
-#    mas = []
-#    @questions.each do |elem|
-#      mas.push(elem.id)
-#    end
-#    @seance = @user.seances.create(quest1: mas[0], quest2: mas[1], quest3: mas[2], quest4: mas[3], quest5: mas[4], quest6: mas[5], 
-#    quest7: mas[6], quest8: mas[7], quest9: mas[8], quest10: mas[9], )
+    mas = []
+    @questions.each do |elem|
+      mas.push(elem.id)
+    end
+    @seances = @user.seances.create(quest1: mas[0], quest2: mas[1], quest3: mas[2], quest4: mas[3], quest5: mas[4], quest6: mas[5], 
+    quest7: mas[6], quest8: mas[7], quest9: mas[8], quest10: mas[9], )
 
-    @seances = Seance.first
+#    @seances = Seance.first
     #@seance_id = @seances.id
     #@seance = Seance.first
-    #@seance_id = @seance.id
+    @seance_id = @seances.id
     @howmuch = '1'
     @one  = 0
     @two  = 0
@@ -69,15 +68,19 @@ class SeancesController < ApplicationController
 
   def testing
     @howmuch = params[:howmuch].to_i
-#    @seance = Seance.find(params[:seance][:id])
 #    @seance = Seance.find(11)
-    @seances = Seance.first
-    @seance_id = params[:id]
+    #@seance_id1 = params[:id]
+    #@seance_id2 = params[:seance][:id]
+    @seance_id = params[:seance_id]
+
+#byebug
+#    @seance = Seance.find(params[:seance][:id])
+    @seances = Seance.find(@seance_id)
+    #@seances = Seance.first
     @one  = params[:one]
     @two  = params[:two]
     @three  = params[:three]
     @four = params[:four]
-#byebug
     if @howmuch == 1
       @seances.be_quests = '1, '
       if @one == '1'

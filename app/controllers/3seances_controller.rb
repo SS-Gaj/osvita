@@ -142,6 +142,7 @@ class SeancesController < ApplicationController
         @seances.answ5 = 4
       end
     end
+    # if @howmuch == 1
     @seances.save
     
     @howmuch = @howmuch + 1
