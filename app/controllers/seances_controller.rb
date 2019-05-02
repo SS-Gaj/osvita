@@ -43,6 +43,23 @@ class SeancesController < ApplicationController
   # GET /seances/1
   # GET /seances/1.json
   def show
+    #ссылка на БД ВОПРОСов
+    @user = User.find(current_user.profile.user_id)
+    @seance_attr = @seance.attributes
+    @quest = []
+    @answ = []
+    for i in 1..5 do
+      step = "quest" + i.to_s
+      @question = Question.find(@seance_attr[step])
+      @qu_attr = @question.attributes
+      @quest[i] = @qu_attr["question"]
+      pole_num_user = "answ" + i.to_s
+      num_user = @seance_attr[pole_num_user]
+      pole_answer = "answer" + num_user
+      @answ[i] = @qu_attr[pole_answer]
+    end
+#byebug
+
   end
 
   # GET /seances/new
@@ -150,7 +167,10 @@ class SeancesController < ApplicationController
     @howmuch = @howmuch + 1
 #byebug
     if @howmuch > 5 
-      render "show"
+      #render "show"
+      #redirect_to seance_path
+      #redirect_to action: :show, id: '21'
+      redirect_to action: :show, id: @seance_id
     else
     @test_question = @question.question
     @one_var = @question.answer1
