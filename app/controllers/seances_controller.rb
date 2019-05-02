@@ -47,7 +47,8 @@ class SeancesController < ApplicationController
     @user = User.find(current_user.profile.user_id)
     @seance_attr = @seance.attributes
     @quest = []
-    @answ = []
+    @answ_user = []
+    @answ_true = []
     for i in 1..5 do
       step = "quest" + i.to_s
       @question = Question.find(@seance_attr[step])
@@ -55,8 +56,12 @@ class SeancesController < ApplicationController
       @quest[i] = @qu_attr["question"]
       pole_num_user = "answ" + i.to_s
       num_user = @seance_attr[pole_num_user]
-      pole_answer = "answer" + num_user
-      @answ[i] = @qu_attr[pole_answer]
+      answer_user = "answer" + num_user
+      @answ_user[i] = @qu_attr[answer_user]
+      num_true = @qu_attr["best"]
+      #@answ_true[i] = @qu_attr[answer_true] unless num_user == num_true
+      answer_true = "answer" + num_true
+      @answ_true[i] = @qu_attr[answer_true] unless num_user == num_true
     end
 #byebug
 

@@ -5,13 +5,33 @@
 </h3>
 
 <% for i in 1..5 do %>
-<p>
-  <strong>
-    <%= i %>
-    .  </strong>
-  <%= @quest[i] %>
-  <%= @answ[i] %>
-</p>
+  <div class="row">
+    <div class="col-md-1">
+     <%= i %>.
+    </div>
+    <div class="col-md-5">
+      <%= @quest[i] %>
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-5">  
+      <%= @answ_user[i] %>
+    </div>
+  </div>
+  <% unless @answ_true[i].nil? %>
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-5">
+        Правильный ответ:
+      </div>
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-5">
+        <%= @answ_true[i] %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 
