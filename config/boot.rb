@@ -1,5 +1,5 @@
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
-ENV['RAILS_MAX_THREADS'] ||= '5'
+ENV['RAILS_MAX_THREADS'] ||= 5
 
 require 'bundler/setup' # Set up gems listed in the Gemfile.
 require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
