@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   # At install Devise and letter_opener
   # config.action_mailer.default_url_options = { host: 'salty-harbor-78667.herokuapp.com', port: 3000 }
-    config.action_mailer.default_url_options = { host: 91.247.92.234, port: 8080 }
+    config.action_mailer.default_url_options = { host: '91.247.92.234', port: 8080 }
 
   config.action_mailer.delivery_method = :letter_opener
 
