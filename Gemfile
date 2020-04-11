@@ -13,14 +13,15 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-gem 'bootstrap', '~> 4.1.1'
+# gem 'sass-rails', '~> 5.0', '>= 5.0.8'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
+gem 'bootstrap', '~> 4.4.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
